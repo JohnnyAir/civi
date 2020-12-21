@@ -1,4 +1,4 @@
-const ocBrandColors = {
+const BaseColors = {
   900: "#0C2D66",
   800: "#1041A3",
   700: "#1153D6",
@@ -12,7 +12,8 @@ const ocBrandColors = {
 };
 
 const defaultColors = {
-  /** White */
+  primary: BaseColors,
+  blue: BaseColors,
   white: {
     full: "#FFFFFF",
     transparent: {
@@ -20,7 +21,9 @@ const defaultColors = {
       48: "rgba(255, 255, 255, 0.48)",
     },
   },
-  /** Black, neutral */
+  grey:{
+    300:'#f7f7f7'
+  },
   black: {
     900: "#141414",
     800: "#313233",
@@ -40,11 +43,6 @@ const defaultColors = {
       8: "rgba(19, 20, 20, 0.08)",
     },
   },
-  /** Primary */
-  primary: ocBrandColors,
-  /** Info - right now the colors are the same as primary */
-  blue: ocBrandColors,
-  /** Success, Approve */
   green: {
     900: "#256643",
     800: "#1B854C",
@@ -57,7 +55,6 @@ const defaultColors = {
     100: "#E6FAEF",
     50: "#F2FFF8",
   },
-  /** Warning, Alert */
   yellow: {
     900: "#5C5C0B",
     800: "#858510",
@@ -70,7 +67,6 @@ const defaultColors = {
     100: "#FFFFC2",
     50: "#FFFFEB",
   },
-  /** Danger, Error */
   red: {
     900: "#521022",
     800: "#7A0F2B",
