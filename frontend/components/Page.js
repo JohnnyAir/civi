@@ -24,8 +24,19 @@ const StyledPageContainer = styled.div`
   font-family: ${({ theme }) => theme.font.main};
   position: relative;
   overflow: hidden;
-  h1,h2,h3,h4,h5,h6{
-    font-family: ${({ theme }) => theme.font.secondary};
+  color: ${({ theme }) => theme.colors.black[800]};
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${({ theme }) => theme.font.main};
+  }
+  hr{
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.black[300]};
+    border: none;
   }
 `;
 
@@ -39,8 +50,8 @@ const MainContent = styled.main`
 `;
 
 export const StyledPageContent = styled.div`
-  width: 85%;
-  max-width: 980px;
+  width: 90%;
+  max-width: 1200px;
 `;
 
 export default Page;
