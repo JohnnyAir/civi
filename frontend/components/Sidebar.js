@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import NavLink from "../components/NavLink";
 import Image from "next/image";
@@ -7,15 +8,17 @@ import CreateResumeIcon from "../assets/Icons/create-resume.svg";
 import TemplatesIcon from "../assets/Icons/templates.svg";
 
 export default function Sidebar() {
+  const [showMobileMenu, setShowMenu] = React.useState(false);
+
   return (
     <>
       <MobileHeader>
-        <StyledMenuIcon />
+        <StyledMenuIcon onClick={() => setShowMenu(true)} />
         <div className="logo">
           <Image alt="logo" src="/images/logo.png" width={115} height={70} />
         </div>
       </MobileHeader>
-      <SideBarContainer>
+      <SideBarContainer showMobileMenu={showMobileMenu}>
         <LogoSection>
           <div className="img-placeholder">
             <Image alt="logo" src="/images/logo.png" width={230} height={140} />
@@ -64,12 +67,16 @@ export default function Sidebar() {
 
 const SideBarContainer = styled.aside`
   background-color: ${({ theme }) => theme.colors.primary[700]};
-  display: none;
+  display: ${({ showMobileMenu }) => (showMobileMenu ? "block" : "none")};
+  position: absolute;
+  z-index: 11;
+  width: 82%;
+  height: 100vh;
   @media ${({ theme }) => theme.screenSize.tablet} {
+    position: relative;
     display: block;
     width: 15rem;
     min-width: 15rem;
-    height: 100vh;
   }
 `;
 
@@ -136,6 +143,7 @@ const MobileHeader = styled.div`
   padding: 0 12px;
   display: flex;
   align-items: center;
+  z-index: 10;
   .logo {
     width: 70px;
     margin: auto;
