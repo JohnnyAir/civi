@@ -33,7 +33,7 @@ const StyledPageContainer = styled.div`
   h6 {
     font-family: ${({ theme }) => theme.font.main};
   }
-  hr{
+  hr {
     height: 1px;
     background-color: ${({ theme }) => theme.colors.black[300]};
     border: none;
@@ -52,6 +52,17 @@ const MainContent = styled.main`
 export const StyledPageContent = styled.div`
   width: 90%;
   max-width: 1200px;
+  margin-top: 4rem;
+  @media ${({ theme }) => theme.screenSize.tablet} {
+    margin-top: 1rem;
+  }
+`;
+
+export const PageContentHeader = styled.div`
+  display: flex;
+  svg {
+    margin-right: 10px;
+  }
 `;
 
 export default Page;
