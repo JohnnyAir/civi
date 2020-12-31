@@ -4,8 +4,12 @@ import { useRouter } from "next/router";
 
 export default function NavLink({ children, ...props }) {
   const router = useRouter();
-
-  const child = React.Children.only(children);
+  let child =
+    typeof children === "string" ? (
+      <a>{children}</a>
+    ) : (
+      React.Children.only(children)
+    );
 
   let className = child.props.className || "";
   if (router.pathname === props.href) {
