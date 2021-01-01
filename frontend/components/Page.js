@@ -21,23 +21,8 @@ const StyledPageContainer = styled.div`
   display: flex;
   width: 100%;
   min-height: 100vh;
-  font-family: ${({ theme }) => theme.font.main};
   position: relative;
   overflow: hidden;
-  color: ${({ theme }) => theme.colors.black[800]};
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: ${({ theme }) => theme.font.main};
-  }
-  hr {
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black[300]};
-    border: none;
-  }
 `;
 
 const MainContent = styled.main`
@@ -53,6 +38,8 @@ export const StyledPageContent = styled.div`
   width: 90%;
   max-width: 1200px;
   margin-top: 4rem;
+  height: max-content;
+  margin-bottom: 3rem;
   @media ${({ theme }) => theme.screenSize.tablet} {
     margin-top: 1rem;
   }

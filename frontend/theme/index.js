@@ -1,3 +1,4 @@
+import { createGlobalStyle } from "styled-components";
 import breakpoints from "./breakpoints";
 import colors from "./colors";
 
@@ -14,5 +15,25 @@ const theme = {
     navbarHeight: 68,
   },
 };
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: ${({ theme }) => theme.font.main};
+  }
+  color: ${({ theme }) => theme.colors.black[800]};
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${({ theme }) => theme.font.main};
+  }
+  hr {
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.black[300]};
+    border: none;
+  }
+`;
 
 export default theme;
