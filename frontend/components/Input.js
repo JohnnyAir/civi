@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const getBorderColor = ({ error, success, theme }) => {
   if (error) {
@@ -29,19 +29,21 @@ const StyledInput = styled.input`
   height: ${getHeight};
   outline: none;
   padding: 0 0.7rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.black[600]};
   background-color: ${({ theme }) => theme.colors.white.full};
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.black["50"]};
+    background-color: ${({ theme }) => theme.colors.black[50]};
     cursor: not-allowed;
   }
   &:hover:not(:disabled) {
-    border-color: ${({ theme }) => theme.colors.primary["300"]};
+    border-color: ${({ theme }) => theme.colors.primary[300]};
   }
   &:focus:not(:disabled) {
-    border-color: ${({ theme }) => theme.colors.primary["500"]};
+    border-color: ${({ theme }) => theme.colors.primary[500]};
   }
   &::placeholder {
-    color: ${({ theme }) => theme.colors.black["400"]};
+    color: ${({ theme }) => theme.colors.black[400]};
   }
   &[type="date"] {
     font-family: inherit;
