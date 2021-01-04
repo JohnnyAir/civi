@@ -12,7 +12,8 @@ export default function NavLink({ children, ...props }) {
     );
 
   let className = child.props.className || "";
-  if (router.pathname === props.href) {
+  let href = typeof props.href === "string" ? props.href : props.href.pathname;
+  if (router.pathname === href) {
     className = `${className} active`.trim();
   }
 

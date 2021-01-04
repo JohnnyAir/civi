@@ -2,8 +2,19 @@ import Page, { StyledPageContent, PageContentHeader } from "./Page";
 import styled from "styled-components";
 import NavLink from "./NavLink";
 import CreateResumeIcon from "../assets/Icons/create-resume.svg";
+import { useRouter } from "next/router";
 
 export default function CreateResumeLayout({ children }) {
+  const router = useRouter();
+  const { resumeid } = router.query;
+
+  const setHref = (relativePath) => {
+    return {
+      pathname: `/resume/[resumeid]${relativePath}`,
+      query: { resumeid },
+    };
+  };
+
   return (
     <Page>
       <StyledPageContent>
@@ -15,31 +26,31 @@ export default function CreateResumeLayout({ children }) {
           <nav>
             <TabList>
               <Tab>
-                <NavLink href="/create-resume">ABOUT</NavLink>
+                <NavLink href={setHref("")}>ABOUT</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/summary">SUMMARY</NavLink>
+                <NavLink href={setHref("/summary")}>SUMMARY</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/work">WORK</NavLink>
+                <NavLink href={setHref("/work")}>WORK</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/project">PROJECT</NavLink>
+                <NavLink href={setHref("/education")}>EDUCATION</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/education">EDUCATION</NavLink>
+                <NavLink href={setHref("/project")}>PROJECT</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/certification">CERTIFICATIONS</NavLink>
+                <NavLink href={setHref("/certification")}>CERTIFICATIONS</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/involvement">INVOLVEMENTS</NavLink>
+                <NavLink href={setHref("/involvement")}>INVOLVEMENTS</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/skills">SKILLS</NavLink>
+                <NavLink href={setHref("/skills")}>SKILLS</NavLink>
               </Tab>
               <Tab>
-                <NavLink href="/create-resume/preview">PREVIEW</NavLink>
+                <NavLink href={setHref("/preview")}>PREVIEW</NavLink>
               </Tab>
             </TabList>
           </nav>
@@ -88,4 +99,5 @@ const Tab = styled.li`
 const TabSection = styled.div`
   padding: 10px 0px;
   overflow: auto;
+  margin-bottom: 30px;
 `;
