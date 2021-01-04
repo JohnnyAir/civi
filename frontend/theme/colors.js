@@ -9,6 +9,10 @@ const BaseColors = {
   200: "#C2E2FF",
   100: "#E6F3FF",
   50: "#F5FAFF",
+  transparent: {
+    32: "rgba(0, 118, 255, 0.1)",
+    26: "rgba(143, 199, 255, 0.26)"
+  },
 };
 
 const defaultColors = {
@@ -21,8 +25,8 @@ const defaultColors = {
       48: "rgba(255, 255, 255, 0.48)",
     },
   },
-  grey:{
-    300:'#f7f7f7'
+  grey: {
+    300: "#f7f7f7",
   },
   black: {
     900: "#141414",
