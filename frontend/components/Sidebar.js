@@ -4,7 +4,6 @@ import NavLink from "../components/NavLink";
 import Image from "next/image";
 import Menu from "../assets/Icons/menu.svg";
 import ResumeIcon from "../assets/Icons/resume.svg";
-import CreateResumeIcon from "../assets/Icons/create-resume.svg";
 import TemplatesIcon from "../assets/Icons/templates.svg";
 
 export default function Sidebar() {
@@ -31,14 +30,6 @@ export default function Sidebar() {
                 <a>
                   <NavItemIcon as={ResumeIcon} />
                   <NavItemText>My Resumes</NavItemText>
-                </a>
-              </NavLink>
-            </NavListItem>
-            <NavListItem>
-              <NavLink href="/create-resume">
-                <a>
-                  <NavItemIcon as={CreateResumeIcon} />
-                  <NavItemText>Create Resume</NavItemText>
                 </a>
               </NavLink>
             </NavListItem>
