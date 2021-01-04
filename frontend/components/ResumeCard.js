@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import IconMore from "../assets/Icons/more.svg";
+import { useRouter } from "next/router";
 
 export const StyledResumeCardGrid = styled.div`
   box-sizing: border-box;
@@ -18,8 +20,21 @@ export const StyledResumeCardGrid = styled.div`
 
 export const StyledResumeCard = styled.div`
   height: 300px;
-  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
+  position: relative;
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(220, 222, 224);
+  overflow: hidden;
+  outline: none;
+  &:hover,
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary[300]};
+    box-shadow: 0px 0px 3px 1px
+      ${({ theme }) => theme.colors.primary.transparent[26]};
+  }
 `;
 
 export const CreateResumeCard = styled(StyledResumeCard)`
@@ -30,3 +45,38 @@ export const CreateResumeCard = styled(StyledResumeCard)`
   justify-content: center;
   align-items: center;
 `;
+
+const ResumePreview = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+const CardDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - 25px);
+  padding: 5px 15px;
+  bottom: 3px;
+  svg:focus {
+    outline-style: dotted;
+    outline-width: 2px;
+  }
+  svg:hover {
+    fill: ${({ theme }) => theme.colors.primary[300]};
+  }
+`;
+
+export default function ResumeCard(props) {
+  const { resumetitle, id } = props;
+  const router = useRouter();
+  return (
+    <StyledResumeCard onClick={() => router.push(`/resume/${id}`)} tabIndex={0}>
+      <ResumePreview></ResumePreview>
+      <CardDetails>
+        <strong>{resumetitle}</strong>
+        <IconMore width="1rem" tabIndex={0} />
+      </CardDetails>
+    </StyledResumeCard>
+  );
+}
