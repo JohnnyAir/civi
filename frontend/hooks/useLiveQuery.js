@@ -3,7 +3,7 @@ import { useSubscription } from "./useSubscription";
 import { useMemo, useState } from "react";
 
 export function useLiveQuery(querier, dependencies, defaultResult) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") return defaultResult;
   const [lastResult, setLastResult] = useState(defaultResult);
 
   const subscription = useMemo(
