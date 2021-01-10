@@ -2,11 +2,11 @@ import Head from "next/head";
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
 
-function Page({ children }) {
+function Page({ children, ...props }) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>{props.title || "Civi | Create and manage resume offline"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledPageContainer>
