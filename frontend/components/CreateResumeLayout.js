@@ -3,10 +3,14 @@ import styled from "styled-components";
 import NavLink from "./NavLink";
 import CreateResumeIcon from "../assets/Icons/create-resume.svg";
 import { useRouter } from "next/router";
+import useMounted from "../hooks/useMounted";
+import ErrorBoundary from "./ResumeNotFoundErrorBoundary";
 
 export default function CreateResumeLayout({ children }) {
   const router = useRouter();
   const { resumeid } = router.query;
+
+  const isMounted = useMounted();
 
   const setHref = (relativePath) => {
     return {
@@ -44,7 +48,7 @@ export default function CreateResumeLayout({ children }) {
                 <NavLink href={setHref("/certification")}>CERTIFICATIONS</NavLink>
               </Tab>
               <Tab>
-                <NavLink href={setHref("/involvement")}>INVOLVEMENTS</NavLink>
+                <NavLink href={setHref("/volunteer")}>VOLUNTEER</NavLink>
               </Tab>
               <Tab>
                 <NavLink href={setHref("/skills")}>SKILLS</NavLink>
@@ -55,7 +59,7 @@ export default function CreateResumeLayout({ children }) {
             </TabList>
           </nav>
         </TabSection>
-        {children}
+        {isMounted && <ErrorBoundary>{children}</ErrorBoundary>}
       </StyledPageContent>
     </Page>
   );

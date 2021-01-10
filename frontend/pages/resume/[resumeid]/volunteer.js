@@ -4,7 +4,7 @@ import Resume from "../../../lib/resume";
 import { useRouter } from "next/router";
 import CreateResumeLayout from "../../../components/CreateResumeLayout";
 import * as ItemFormLayout from "../../../components/StyledItemFormLayout";
-import FormInput from "../../../components/FormInput";
+import FormInput, { FormTextArea } from "../../../components/FormInput";
 import Space from "../../../components/Space";
 import ItemCard from "../../../components/ItemCard";
 import Button from "../../../components/Button";
@@ -24,7 +24,7 @@ const initialFormState = {
   editIndex: null,
 };
 
-function EducationForm() {
+function VolunteerExperienceForm() {
   const router = useRouter();
   const { resumeid } = router.query;
   const [formState, SetFormState] = useState(initialFormState);
@@ -33,7 +33,7 @@ function EducationForm() {
   const resume = useLiveQuery(
     () => resumeid && Resume.findById(resumeid, true),
     [resumeid],
-    { loading: true, education: [] }
+    { loading: true, voluntaryWorks: [] }
   );
 
   const handleInputChange = ({ target }) => {
@@ -41,18 +41,17 @@ function EducationForm() {
     SetFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const addEducation = async (e) => {
+  const addVoluntaryWork = async (e) => {
     e.preventDefault();
     setLoading(true);
-    //create copy to avoid mutation
     let _resume = new Resume(resume);
     try {
       let { editMode, editIndex, ...formData } = formState;
       if (editMode) {
-        _resume.education[editIndex] = { ...formData };
+        _resume.voluntaryWorks[editIndex] = { ...formData };
       } else {
-        if (!_resume.education) _resume.education = [];
-        _resume.education.push(formData);
+        if (!_resume.voluntaryWorks) _resume.voluntaryWorks = [];
+        _resume.voluntaryWorks.push(formData);
       }
       await _resume.update();
       SetFormState(initialFormState);
@@ -65,7 +64,7 @@ function EducationForm() {
 
   const handleEdit = (editIndex) => {
     SetFormState({
-      ...resume.education[editIndex],
+      ...resume.voluntaryWorks[editIndex],
       editMode: true,
       editIndex: editIndex,
     });
@@ -73,30 +72,30 @@ function EducationForm() {
 
   const handleDelete = (editIndex) => {
     let _resume = new Resume(resume);
-    _resume.education.splice(editIndex, 1);
+    _resume.voluntaryWorks.splice(editIndex, 1);
     _resume.update();
   };
 
   return (
     <ItemFormLayout.Layout>
       <ItemFormLayout.ItemSection>
-        <h6>Your Education </h6>
+        <h6>Your Volunteer Experience </h6>
         <div>
           {resume && (
-            <EducationList
+            <VolunteerExperienceList
               onItemEdit={handleEdit}
               onItemDelete={handleDelete}
               loading={resume.loading}
-              education={resume.education}
+              voluntaryWorks={resume.voluntaryWorks}
             />
           )}
         </div>
       </ItemFormLayout.ItemSection>
       <ItemFormLayout.FormSection>
-        <h6>Add Education </h6>
-        <ItemFormLayout.Form onSubmit={addEducation}>
+        <h6>Add Your Volunteer Experience </h6>
+        <ItemFormLayout.Form onSubmit={addVoluntaryWork}>
           <FormInput
-            label="Qualification"
+            label="Title/Position"
             size="large"
             placeholder="ex. Bsc"
             name="qualification"
@@ -104,7 +103,7 @@ function EducationForm() {
             onChange={handleInputChange}
           />
           <FormInput
-            label="Field of study"
+            label="Organization"
             size="large"
             placeholder="ex. Computer Science"
             name="field"
@@ -112,9 +111,9 @@ function EducationForm() {
             onChange={handleInputChange}
           />
           <FormInput
-            label="School"
+            label="Location"
             size="large"
-            placeholder="ex. University of Lagos"
+            placeholder="City, Country"
             name="school"
             value={formState.school}
             onChange={handleInputChange}
@@ -135,43 +134,47 @@ function EducationForm() {
             value={formState.dateTo}
             onChange={handleInputChange}
           />
-          <FormInput
-            label="Location"
+          <FormTextArea
+            label="Organization Description (optional)"
             size="large"
             placeholder="ex. Lagos, Nigeria"
             name="location"
             value={formState.location}
             onChange={handleInputChange}
+            height="6rem"
           />
-          <FormInput
-            label="GPA"
+          <FormTextArea
+            label="Tasks/Achievements"
             size="large"
             placeholder="ex. 3.84"
             name="gpa"
             value={formState.gpa}
             onChange={handleInputChange}
+            height="12rem"
           />
-          <Button loading={loading} type="submit" fluid>
-            {formState.editMode ? "Update Education" : "Add Education"}
+          <Button type="submit" fluid>
+            {formState.editMode
+              ? "Update Volunteer Experience"
+              : "Add Volunteer Experience"}
           </Button>
           <Space y={2} />
           <Button
             link
-            href={`/resume/${resumeid}/work`}
+            href={`/resume/${resumeid}/certification`}
             size="small"
             iconPosition="left"
             icon={<LeftArrow width="24px" height="24px" />}
           >
-            Work
+            Certifications
           </Button>
           <Button
             link
-            href={`/resume/${resumeid}/project`}
+            href={`/resume/${resumeid}/skills`}
             size="small"
             icon={<RightArrow width="24px" height="24px" />}
             style={{ float: "right" }}
           >
-            Project
+            Skills
           </Button>
         </ItemFormLayout.Form>
       </ItemFormLayout.FormSection>
@@ -179,34 +182,38 @@ function EducationForm() {
   );
 }
 
-function EducationList(props) {
-  let { education, loading, onItemEdit, onItemDelete } = props;
+function VolunteerExperienceList(props) {
+  let { voluntaryWorks, loading, onItemEdit, onItemDelete } = props;
 
   if (loading) {
     return "Loading";
   }
 
-  if (!education || !education.length) {
-    return <EmptySectionText>Fill form to add your education</EmptySectionText>;
+  if (!voluntaryWorks || !voluntaryWorks.length) {
+    return (
+      <EmptySectionText>
+        Fill form to add your Volunteer Experience
+      </EmptySectionText>
+    );
   }
 
-  return education.map((education, index) => (
+  return voluntaryWorks.map((v, index) => (
     <ItemCard
-      key={education.school + index}
-      MainTitle={education.qualification}
-      SubTitle={education.school}
-      dateFrom={education.dateFrom}
-      dateTo={education.dateTo}
+      key={v.school + index}
+      MainTitle={v.qualification}
+      SubTitle={v.school}
+      dateFrom={v.dateFrom}
+      dateTo={v.dateTo}
       onEdit={() => onItemEdit(index)}
       onDelete={() => onItemDelete(index)}
     />
   ));
 }
 
-export default function EducationPage() {
+export default function VolunteerExperiencePage() {
   return (
     <CreateResumeLayout>
-      <EducationForm />
+      <VolunteerExperienceForm />
     </CreateResumeLayout>
   );
 }
