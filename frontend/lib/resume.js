@@ -13,28 +13,28 @@ class Resume {
     if (data) Object.assign(this, data);
   }
 
-  Save() {
+  save() {
     Object.assign(this, {
       id: uuidv4(),
     });
     return db.resumes.add(this);
   }
 
-  Update() {
+  update() {
     return db.resumes.put(this);
   }
 
-  static All() {
+  static all() {
     return db.resumes.toCollection().toArray();
   }
 
-  static async ID(id, throwIfNull) {
+  static async findById(id, throwIfNull) {
     let resumePromise = db.resumes.get(id);
     if(!throwIfNull) return resumePromise;
     try {
       let resume = await resumePromise;
       if(resume) return resumePromise;
-      throw "Not Found"
+      throw new Error("Resume not Found")
     } catch (error) {
       throw error;
     }
