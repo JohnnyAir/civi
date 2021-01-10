@@ -1,33 +1,32 @@
 import styled, { css } from "styled-components";
 
 const getButtonSizes = ({ size }) => {
-  let sizes = {
-    large: {
-      fontSize: "1.5rem",
-      padding: "18px 40px",
-      borderWidth: "2px",
-    },
-    medium: {
-      fontSize: "0.9rem",
-      fontWeight: 600,
-      lineHeight: "1.2rem",
-      padding: "10px 20px",
-      borderWidth: "2px",
-    },
-    small: {
-      fontSize: "0.8rem",
-      padding: "8px 12px",
-      lineHeight: "0.8rem",
-      fontWeight: 500,
-      height: "0.8rem",
-    },
-    tiny: {
-      fontSize: "0.65rem",
-      letterSpacing: 0,
-      padding: "4px 9px;",
-    },
-  };
-  return css(sizes[size]);
+  return {
+    large: css`
+      font-size: 1.5rem;
+      padding: 18px 40px;
+      border-width: 2px;
+    `,
+    medium: css`
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.2rem;
+      padding: 10px 20px;
+      border-width: 2px;
+    `,
+    small: css`
+      font-size: 0.8rem;
+      padding: 8px 12px;
+      line-height: 0.8rem;
+      font-weight: 500;
+      height: 0.8rem;
+    `,
+    tiny: css`
+      font-size: 0.65rem;
+      letter-spacing: 0;
+      padding: 4px 9px;
+    `,
+  }[size];
 };
 
 const getButtonColor = ({ color }) => {
@@ -35,13 +34,37 @@ const getButtonColor = ({ color }) => {
     background-color: ${({ theme }) => theme.colors[color][600]};
     color: #ffffff;
     fill: #ffffff;
-    &:hover {
+    & .loading-icon {
+      stroke: ${({ theme }) => theme.colors[color][400]};
+    }
+    &:hover(:disabled) {
       background-color: ${({ theme }) => theme.colors[color][700]};
     }
     &:focus:not(:disabled) {
       border-color: ${({ theme }) => theme.colors[color][800]};
     }
+    &:disabled {
+      background-color: ${({ theme }) => theme.colors[color][400]};
+      cursor: not-allowed;
+    }
   `;
+};
+
+const getLoadingIconSize = ({ size }) => {
+  return {
+    large: css`
+      width: 2.3rem;
+    `,
+    medium: css`
+      width: 2rem;
+    `,
+    small: css`
+      width: 1rem;
+    `,
+    tiny: css`
+      width: 0.8rem;
+    `,
+  }[size];
 };
 
 const StyledButton = styled.button`
@@ -71,7 +94,12 @@ const StyledButton = styled.button`
       align-items: center;
       flex-direction: ${iconPosition === "left" ? "row-reverse" : "row"};
     `};
-  & .btn-icon {
+  & .loading-icon {
+    stroke-width: 8px;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    ${getLoadingIconSize}
   }
   ${getButtonSizes}
   ${getButtonColor}
