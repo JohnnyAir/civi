@@ -98,7 +98,7 @@ function EducationForm() {
           <FormInput
             label="Qualification"
             size="large"
-            placeholder="ex. Bsc"
+            placeholder="Educational Qualification"
             name="qualification"
             value={formState.qualification}
             onChange={handleInputChange}
@@ -106,7 +106,7 @@ function EducationForm() {
           <FormInput
             label="Field of study"
             size="large"
-            placeholder="ex. Computer Science"
+            placeholder="Field of study"
             name="field"
             value={formState.field}
             onChange={handleInputChange}
@@ -114,7 +114,7 @@ function EducationForm() {
           <FormInput
             label="School"
             size="large"
-            placeholder="ex. University of Lagos"
+            placeholder="School"
             name="school"
             value={formState.school}
             onChange={handleInputChange}
@@ -138,7 +138,7 @@ function EducationForm() {
           <FormInput
             label="Location"
             size="large"
-            placeholder="ex. Lagos, Nigeria"
+            placeholder="City, Country"
             name="location"
             value={formState.location}
             onChange={handleInputChange}

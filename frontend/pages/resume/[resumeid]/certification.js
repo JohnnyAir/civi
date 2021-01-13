@@ -96,7 +96,7 @@ export default function CertificationForm() {
             <FormInput
               label="Certificate Name"
               size="large"
-              placeholder="ex. Bsc"
+              placeholder="Certificate Name"
               name="certificateName"
               value={formState.certificateName}
               onChange={handleInputChange}
@@ -104,7 +104,7 @@ export default function CertificationForm() {
             <FormInput
               label="Issuer"
               size="large"
-              placeholder="ex. "
+              placeholder="Issuer"
               name="issuedBy"
               value={formState.issuedBy}
               onChange={handleInputChange}

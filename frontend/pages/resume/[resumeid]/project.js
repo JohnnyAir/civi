@@ -97,7 +97,7 @@ function ProjectsForm() {
           <FormInput
             label="Project Name"
             size="large"
-            placeholder="ex. Bsc"
+            placeholder="Project Name"
             name="projectName"
             value={formState.projectName}
             onChange={handleInputChange}
@@ -105,7 +105,7 @@ function ProjectsForm() {
           <FormInput
             label="Organization"
             size="large"
-            placeholder="ex. Computer Science"
+            placeholder="Organization"
             name="organization"
             value={formState.organization}
             onChange={handleInputChange}
@@ -113,7 +113,7 @@ function ProjectsForm() {
           <FormInput
             label="Start Date"
             size="large"
-            placeholder="ex. University of Lagos"
+            placeholder="ex. January 2020"
             name="dateFrom"
             value={formState.dateFrom}
             onChange={handleInputChange}

@@ -97,7 +97,7 @@ function VolunteerExperienceForm() {
           <FormInput
             label="Title/Position"
             size="large"
-            placeholder="ex. Bsc"
+            placeholder="Title/Position"
             name="qualification"
             value={formState.qualification}
             onChange={handleInputChange}
@@ -105,7 +105,7 @@ function VolunteerExperienceForm() {
           <FormInput
             label="Organization"
             size="large"
-            placeholder="ex. Computer Science"
+            placeholder="Organization"
             name="field"
             value={formState.field}
             onChange={handleInputChange}
@@ -135,9 +135,9 @@ function VolunteerExperienceForm() {
             onChange={handleInputChange}
           />
           <FormTextArea
-            label="Organization Description (optional)"
+            label="Organization Description"
             size="large"
-            placeholder="ex. Lagos, Nigeria"
+            placeholder=""
             name="location"
             value={formState.location}
             onChange={handleInputChange}
@@ -146,7 +146,7 @@ function VolunteerExperienceForm() {
           <FormTextArea
             label="Tasks/Achievements"
             size="large"
-            placeholder="ex. 3.84"
+            placeholder=""
             name="gpa"
             value={formState.gpa}
             onChange={handleInputChange}

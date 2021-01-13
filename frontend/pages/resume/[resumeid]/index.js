@@ -9,16 +9,16 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const initialFormState = {
-  fullname: "",
-  jobTitle: "",
   email: "",
   phoneNo: "",
   country: "",
   state: "",
   city: "",
   link: "",
+  fullname: "",
   linkedInUrl: "",
   twitterHandle: "",
+  ProfessionalTitle: "",
 };
 
 function AboutForm() {
@@ -30,7 +30,7 @@ function AboutForm() {
   useEffect(() => {
     if (resumeid)
       Resume.findById(resumeid, true)
-        .then((resume) => setResumeInfo(resume))
+        .then((resume) => setResumeInfo({...initialFormState,...resume}))
         .catch((e) => {
           // throw error so error boundary can catch it
           setLoading(() => {
@@ -61,18 +61,18 @@ function AboutForm() {
       <FormInput
         label="Full Name"
         size="large"
-        placeholder="John Doe"
+        placeholder="Your Name"
         autoComplete="name"
-        value={resume.fullname || ""}
+        value={resume.fullname}
         name="fullname"
         onChange={handleInputChange}
       />
       <FormInput
-        label="Job Title"
+        label="Professional Title"
         size="large"
-        placeholder="Project Manager"
-        value={resume.jobTitle || ""}
-        name="jobTitle"
+        placeholder="Professional Title"
+        value={resume.jobTitle}
+        name="ProfessionalTitle"
         onChange={handleInputChange}
       />
       <FormInput
@@ -81,7 +81,7 @@ function AboutForm() {
         size="large"
         placeholder="example@mail.com"
         autoComplete="email"
-        value={resume.email || ""}
+        value={resume.email}
         name="email"
         onChange={handleInputChange}
       />
@@ -89,7 +89,7 @@ function AboutForm() {
         label="Phone Number"
         size="large"
         placeholder="Phone Number"
-        value={resume.phoneNo || ""}
+        value={resume.phoneNo}
         name="phoneNo"
         onChange={handleInputChange}
       />
@@ -97,7 +97,7 @@ function AboutForm() {
         label="Country"
         size="large"
         placeholder="Country"
-        value={resume.country || ""}
+        value={resume.country}
         name="country"
         onChange={handleInputChange}
       />
@@ -105,7 +105,7 @@ function AboutForm() {
         label="State"
         size="large"
         placeholder="State"
-        value={resume.state || ""}
+        value={resume.state}
         name="state"
         onChange={handleInputChange}
       />
@@ -113,7 +113,7 @@ function AboutForm() {
         label="City"
         size="large"
         placeholder="City"
-        value={resume.city || ""}
+        value={resume.city}
         name="city"
         onChange={handleInputChange}
       />
@@ -121,7 +121,7 @@ function AboutForm() {
         label="Personal Website"
         size="large"
         placeholder="https://www.myportfolio.com"
-        value={resume.link || ""}
+        value={resume.link}
         name="link"
         onChange={handleInputChange}
       />
@@ -129,7 +129,7 @@ function AboutForm() {
         label="Linkedin URL"
         size="large"
         placeholder="https://www.linkedin.com/in/user-14286b162/"
-        value={resume.linkedInUrl || ""}
+        value={resume.linkedInUrl}
         name="linkedInUrl"
         onChange={handleInputChange}
       />
@@ -137,7 +137,7 @@ function AboutForm() {
         label="Twitter Handle"
         size="large"
         placeholder="@mytwitterhandle"
-        value={resume.twitterHandle || ""}
+        value={resume.twitterHandle}
         name="twitterHandle"
         onChange={handleInputChange}
       />

@@ -105,7 +105,7 @@ function WorkExperienceForm() {
           <FormInput
             label="Location"
             size="large"
-            placeholder="Lagos, Nigeria"
+            placeholder="City, Country"
             name="location"
             value={formState.location}
             onChange={handleInputChange}
