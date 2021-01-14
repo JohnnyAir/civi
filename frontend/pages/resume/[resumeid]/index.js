@@ -7,6 +7,7 @@ import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import Resume from "../../../lib/resume";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from 'react-toast';
 
 const initialFormState = {
   email: "",
@@ -49,6 +50,7 @@ function AboutForm() {
     setLoading(true);
     try {
       await new Resume(resume).update();
+      toast.success("Changes Saved!");
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,7 +73,7 @@ function AboutForm() {
         label="Professional Title"
         size="large"
         placeholder="Professional Title"
-        value={resume.jobTitle}
+        value={resume.ProfessionalTitle}
         name="ProfessionalTitle"
         onChange={handleInputChange}
       />

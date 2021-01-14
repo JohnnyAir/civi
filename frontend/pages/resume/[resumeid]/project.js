@@ -11,6 +11,7 @@ import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import { useLiveQuery } from "../../../hooks/useLiveQuery";
+import { toast } from "react-toast";
 
 const initialFormState = {
   projectName: "",
@@ -54,10 +55,11 @@ function ProjectsForm() {
       }
       await _resume.update();
       SetFormState(initialFormState);
+      toast.success(editMode ? "Changes Saved" : "Project Added");
     } catch (error) {
       console.log(error);
       setLoading(false);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };

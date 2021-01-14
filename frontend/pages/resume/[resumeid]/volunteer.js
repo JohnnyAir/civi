@@ -11,6 +11,7 @@ import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import { useLiveQuery } from "../../../hooks/useLiveQuery";
+import { toast } from "react-toast";
 
 const initialFormState = {
   qualification: "",
@@ -55,6 +56,7 @@ function VolunteerExperienceForm() {
       }
       await _resume.update();
       SetFormState(initialFormState);
+      toast.success(editMode? "Changes saved": "Volunteer experience added")
     } catch (error) {
       console.log(error);
     } finally {
@@ -152,7 +154,7 @@ function VolunteerExperienceForm() {
             onChange={handleInputChange}
             height="12rem"
           />
-          <Button type="submit" fluid>
+          <Button loading = {loading} type="submit" fluid>
             {formState.editMode
               ? "Update Volunteer Experience"
               : "Add Volunteer Experience"}

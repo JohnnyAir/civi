@@ -11,6 +11,7 @@ import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import { useLiveQuery } from "../../../hooks/useLiveQuery";
+import { toast } from "react-toast";
 
 const initialFormState = {
   company: "",
@@ -55,6 +56,7 @@ function WorkExperienceForm() {
       }
       await _resume.update();
       SetFormState(initialFormState);
+      toast.success(editMode ? "Changes Saved" : "Experience Added");
     } catch (error) {
       console.log(error);
     } finally {
@@ -103,6 +105,14 @@ function WorkExperienceForm() {
             onChange={handleInputChange}
           />
           <FormInput
+            label="Position"
+            size="large"
+            placeholder="Project Manager"
+            name="position"
+            value={formState.position}
+            onChange={handleInputChange}
+          />
+          <FormInput
             label="Location"
             size="large"
             placeholder="City, Country"
@@ -124,14 +134,6 @@ function WorkExperienceForm() {
             placeholder="December 2020"
             name="dateTo"
             value={formState.dateTo}
-            onChange={handleInputChange}
-          />
-          <FormInput
-            label="Position"
-            size="large"
-            placeholder="Project Manager"
-            name="position"
-            value={formState.position}
             onChange={handleInputChange}
           />
           <FormTextArea

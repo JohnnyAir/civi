@@ -11,6 +11,7 @@ import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import { useLiveQuery } from "../../../hooks/useLiveQuery";
+import { toast } from "react-toast";
 
 const initialFormState = {
   certificateName: "",
@@ -53,6 +54,7 @@ export default function CertificationForm() {
       }
       await _resume.Update();
       SetFormState(initialFormState);
+      toast.success(editMode? "Changes saved": "Certification added")
     } catch (error) {
       console.log(error);
     } finally {

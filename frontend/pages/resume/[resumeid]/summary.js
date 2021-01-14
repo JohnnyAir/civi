@@ -8,6 +8,7 @@ import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import Space from "../../../components/Space";
+import { toast } from 'react-toast';
 
 function SummaryForm() {
   const router = useRouter();
@@ -41,6 +42,7 @@ function SummaryForm() {
     setLoading(true);
     try {
       await new Resume({ ...resume, professionalSummary: summary }).update();
+      toast.success("Professional summary saved!")
     } catch (error) {
       console.log(error);
     } finally {

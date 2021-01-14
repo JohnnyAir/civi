@@ -4,13 +4,14 @@ import Resume from "../../../lib/resume";
 import { useRouter } from "next/router";
 import CreateResumeLayout from "../../../components/CreateResumeLayout";
 import * as ItemFormLayout from "../../../components/StyledItemFormLayout";
-import FormInput, { FormTextArea } from "../../../components/FormInput";
+import FormInput from "../../../components/FormInput";
 import Space from "../../../components/Space";
 import ItemCard from "../../../components/ItemCard";
 import Button from "../../../components/Button";
 import RightArrow from "../../../assets/Icons/right-arrow.svg";
 import LeftArrow from "../../../assets/Icons/left-arrow.svg";
 import { useLiveQuery } from "../../../hooks/useLiveQuery";
+import { toast } from "react-toast";
 
 const initialFormState = {
   skill: "",
@@ -47,6 +48,7 @@ function SkillsForm() {
       }
       await _resume.update();
       SetFormState(initialFormState);
+      toast.success(editMode ? "Changes saved!": "Skill added")
     } catch (error) {
       console.log(error);
     }
