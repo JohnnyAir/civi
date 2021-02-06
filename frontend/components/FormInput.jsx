@@ -1,6 +1,19 @@
 import Input from "./Input";
 import styled from "styled-components";
 
+export function FormTextArea(props) {
+  return <FormInput as={StyledTextArea} {...props} />;
+}
+
+export default function FormInput({ label, ...props }) {
+  return (
+    <FormGroup>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Input {...props} />
+    </FormGroup>
+  );
+}
+
 const FormLabel = styled.label`
   font-size: 0.85rem;
   font-weight: 500;
@@ -25,16 +38,3 @@ const StyledTextArea = styled.textarea`
     font-weight: 500;
   }
 `;
-
-export function FormTextArea(props) {
-  return <FormInput as={StyledTextArea} {...props} />;
-}
-
-export default function FormInput({ label, ...props }) {
-  return (
-    <FormGroup>
-      {label && <FormLabel>{label}</FormLabel>}
-      <Input {...props} />
-    </FormGroup>
-  );
-}

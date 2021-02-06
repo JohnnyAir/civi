@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import breakpoints from "./breakpoints";
+import { breakpoints, mediaQueries } from "./breakpoints";
 import colors from "./colors";
 
 const font = {
@@ -10,29 +10,22 @@ const font = {
 const theme = {
   font,
   colors,
-  screenSize: breakpoints.bp,
-  sizes: {
-    navbarHeight: 68,
-  },
+  breakpoints,
+  mediaQueries,
 };
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: ${({ theme }) => theme.font.main};
+    font-family: ${font.main};
   }
-  color: ${({ theme }) => theme.colors.black[800]};
+  color: ${colors.black[800]}
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: ${({ theme }) => theme.font.main};
-  }
-  hr {
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black[300]};
-    border: none;
+    font-family: ${font.main};
   }
 `;
 

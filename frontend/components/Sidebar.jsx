@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import NavLink from "../components/NavLink";
-import Image from "next/image";
-import Menu from "../assets/Icons/menu.svg";
-import ResumeIcon from "../assets/Icons/resume.svg";
-import TemplatesIcon from "../assets/Icons/templates.svg";
+import NavLink from "./NavLink";
+import Icon from "../icons";
 
 export default function Sidebar() {
   const [showMobileMenu, setShowMenu] = React.useState(false);
@@ -12,15 +9,15 @@ export default function Sidebar() {
   return (
     <>
       <MobileHeader>
-        <StyledMenuIcon onClick={() => setShowMenu(true)} />
+        <Icon name="menu" onClick={() => setShowMenu(true)} />
         <div className="logo">
-          <Image alt="logo" src="/images/logo.png" width={115} height={70} />
+          <img alt="logo" src="/images/logo.png" />
         </div>
       </MobileHeader>
       <SideBarContainer showMobileMenu={showMobileMenu}>
         <LogoSection>
           <div className="img-placeholder">
-            <Image alt="logo" src="/images/logo.png" width={230} height={140} />
+            <img alt="logo" src="/images/logo.png" />
           </div>
         </LogoSection>
         <nav>
@@ -28,7 +25,7 @@ export default function Sidebar() {
             <NavListItem>
               <NavLink href="/">
                 <a>
-                  <NavItemIcon as={ResumeIcon} />
+                  <Icon width={25} fill="white" name="create_resume" />
                   <NavItemText>My Resumes</NavItemText>
                 </a>
               </NavLink>
@@ -36,7 +33,7 @@ export default function Sidebar() {
             <NavListItem>
               <NavLink href="/templates">
                 <a>
-                  <NavItemIcon as={TemplatesIcon} />
+                  <Icon width={25} fill="white" name="templates" />
                   <NavItemText>Templates</NavItemText>
                 </a>
               </NavLink>
@@ -44,7 +41,7 @@ export default function Sidebar() {
             <NavListItem>
               <NavLink href="/design">
                 <a>
-                  <NavItemIcon as={ResumeIcon} />
+                  <Icon width={25} fill="white" name="create_resume" />
                   <NavItemText>Design</NavItemText>
                 </a>
               </NavLink>
@@ -63,7 +60,7 @@ const SideBarContainer = styled.aside`
   z-index: 11;
   width: 82%;
   height: 100vh;
-  @media ${({ theme }) => theme.screenSize.tablet} {
+  ${({ theme }) => theme.mediaQueries.tablet} {
     position: relative;
     display: block;
     width: 15rem;
@@ -92,12 +89,6 @@ const NavListItem = styled.li`
   }
 `;
 
-const NavItemIcon = styled.div`
-  width: 1.4rem;
-  height: 1.4rem;
-  fill: #fff;
-`;
-
 const NavItemText = styled.span`
   padding-left: 1.5rem;
   text-transform: uppercase;
@@ -109,20 +100,19 @@ const NavItemText = styled.span`
 `;
 
 const LogoSection = styled.div`
-  background: #fff;
-  height: 6rem;
+  height: max-content;
+  padding: 10px;
   & > div.img-placeholder {
-    width: 5rem;
-    height: 3rem;
-    margin: auto;
-    padding-top: 14px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 10px 0;
+    img {
+      width: 115px;
+      height: 60px;
+      margin: auto;
+    }
   }
-`;
-
-const StyledMenuIcon = styled(Menu)`
-  width: 1.7rem;
-  height: 1.7rem;
-  color: #000;
 `;
 
 const MobileHeader = styled.div`
@@ -140,7 +130,7 @@ const MobileHeader = styled.div`
     margin: auto;
     padding-right: 20px;
   }
-  @media ${({ theme }) => theme.screenSize.tablet} {
+  ${({ theme }) => theme.mediaQueries.tablet} {
     display: none;
   }
 `;

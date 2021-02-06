@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Page, { StyledPageContent, PageContentHeader } from "../components/Page";
-import CreateResumeModal from "../components/CreateResumeModal";
-import { useLiveQuery } from "../hooks/useLiveQuery";
-import ResumeCard, { StyledResumeCardGrid, CreateResumeCard } from "../components/ResumeCard";
-import Resume from "../lib/resume";
-import TemplatesSvg from "../assets/Icons/templates.svg";
+import Page, { StyledPageContent, PageContentHeader } from "@components/Page";
+import ResumeCard, { StyledResumeCardGrid, CreateResumeCard } from "@components/ResumeCard";
+import { useLiveQuery } from "@hooks/useLiveQuery";
+import CreateResumeModal from "@components/CreateResumeModal";
+import Resume from "@lib/resume";
+import Svg from "../icons";
 
-function MySavedResumes() {
+function SavedResumesList() {
   const savedResumes = useLiveQuery(Resume.all);
   if (!savedResumes || !savedResumes.length) return null;
 
@@ -21,19 +21,18 @@ export default function Home() {
   const closeModal = () => {
     setOpenModal(false);
   };
-
   return (
     <Page>
       <StyledPageContent>
         <PageContentHeader>
-          <TemplatesSvg width="2rem" />
+          <Svg name="templates" width="2rem" />
           <h3>My Resumes</h3>
         </PageContentHeader>
         <StyledResumeCardGrid>
           <CreateResumeCard onClick={() => setOpenModal(true)} tabIndex={0}>
             <h6>CREATE NEW RESUME</h6>
           </CreateResumeCard>
-          <MySavedResumes />
+          <SavedResumesList />
         </StyledResumeCardGrid>
       </StyledPageContent>
       <CreateResumeModal

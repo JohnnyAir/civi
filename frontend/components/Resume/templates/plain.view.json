@@ -1,0 +1,324 @@
+{
+  "component": "Flex",
+  "props": {
+    "flexDirection": "column",
+    "fontSize": "10pt",
+    "lineHeight": "1.5"
+  },
+  "children": [
+    {
+      "component": "Flex",
+      "props": {
+        "key": 1,
+        "flexDirection": "column",
+        "alignItems": "center",
+        "pb": 10
+      },
+      "children": [
+        {
+          "component": "Header",
+          "props": null,
+          "children": "John Ekunola"
+        },
+        {
+          "component": "Flex",
+          "props": {
+            "justifyContent": "center",
+            "flexWrap": "wrap"
+          },
+          "children": [
+            {
+              "component": "Text",
+              "props": {
+                "pl": 3
+              },
+              "children": [
+                {
+                  "component": "Icon",
+                  "props": {
+                    "name": "address_pin",
+                    "pl": "0.35rem",
+                    "pr": "0.25rem"
+                  }
+                },
+                "Lagos, Nigeria"
+              ]
+            },
+            {
+              "component": "Text",
+              "props": {
+                "pl": 2
+              },
+              "children": [
+                {
+                  "component": "Icon",
+                  "props": {
+                    "name": "email",
+                    "pl": "0.35rem",
+                    "pr": "0.25rem"
+                  }
+                },
+                "johnekunola07@gmail.com"
+              ]
+            },
+            {
+              "component": "Text",
+              "props": {
+                "pl": 2
+              },
+              "children": [
+                {
+                  "component": "Icon",
+                  "props": {
+                    "name": "address_pin",
+                    "pl": "0.35rem",
+                    "pr": "0.25rem"
+                  }
+                },
+                "09017972720"
+              ]
+            },
+            {
+              "component": "Text",
+              "props": {
+                "pl": 2
+              },
+              "children": [
+                {
+                  "component": "Icon",
+                  "props": {
+                    "name": "address_pin",
+                    "pl": "0.35rem",
+                    "pr": "0.25rem"
+                  }
+                },
+                "https://www.linkedin.com/in/john-ekunola-18283b162/"
+              ]
+            }
+          ]
+        },
+        {
+          "component": "Hr",
+          "props": {
+            "mt": "1rem",
+            "mb": "10px",
+            "borderStyle": "dashed"
+          },
+          "children": null
+        }
+      ]
+    },
+    {
+      "component": "Flex",
+      "props": {
+        "flexDirection": "column",
+        "width": "100%",
+        "pt": 15,
+        "pb": 15
+      },
+      "children": [
+        {
+          "component": "Header",
+          "props": {
+            "as": "h3"
+          },
+          "children": "SUMMARY"
+        },
+        {
+          "component": "Hr",
+          "props": { "borderStyle": "solid" },
+          "children": null
+        },
+        {
+          "component": "Paragraph",
+          "props": {
+            "contentEditable": true
+          },
+          "children": "I am a Software Engineer with 3 years of professional experience in using JavaScript and different JavaScript frameworks such as React, Typescript,  Express.js (Node.js) in developing  SaaS enterprise solutions, report and analytics dashboard and custom enterprise solution. I am eager to experiment with new technologies and waste no time to learn and use them. I love to share and gain knowledge with others."
+        }
+      ]
+    },
+    {
+      "component": "Flex",
+      "props": {
+        "flexDirection": "column",
+        "width": "100%",
+        "pt": 15,
+        "pb": 15
+      },
+      "children": [
+        {
+          "component": "Header",
+          "props": {
+            "as": "h3"
+          },
+          "children": "WORK EXPERIENCE"
+        },
+        {
+          "component": "Hr",
+          "props": { "borderStyle": "solid" },
+          "children": null
+        },
+        {
+          "component": "Flex",
+          "props": { "flexDirection": "column" },
+          "children": [
+            {
+              "component": "Header",
+              "props": {
+                "as": "h3"
+              },
+              "children": "Software Engineer"
+            },
+            {
+              "component": "Flex",
+              "props": { "justifyContent": "space-between" },
+              "children": [
+                {
+                  "component": "Header",
+                  "props": {
+                    "as": "h4"
+                  },
+                  "children": "High Tech Synergy"
+                },
+                {
+                  "component": "Header",
+                  "props": {
+                    "as": "h4"
+                  },
+                  "children": [
+                    {
+                      "component": "Text",
+                      "props": {
+                        "mr": "5px"
+                      },
+                      "children": "March 2018 - Present ,"
+                    },
+                    {
+                      "component": "Text",
+                      "props": null,
+                      "children": "Ibadan, Nigeria"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "Paragraph",
+          "props": {
+            "mt": "5px"
+          },
+          "children": "• Developed a web based solution that enables agents  of a top  gaming company in Africa pay their debts, fines. \n• Developed bank reconciliation solution that enables clients using our ERP solution reconcile their bank transaction statement with transactions recorded in our solutions using API provided by banks. \n• Redesigned and optimized offline data synchronization for an offline first mobile solution using batching, temporary data store and scheduled background data processing. This reduced synchronization failure rate by 99%. \n• Developed a point of sale terminal with sophisticated reporting features, real time notification and real time analytics using ReactJs,  Signal-R. This enabled store managers track inventory levels and monitor all sales activities from a simple yet intuitive dashboard."
+        }
+      ]
+    },
+    {
+      "component": "Flex",
+      "props": {
+        "flexDirection": "column",
+        "width": "100%",
+        "pt": 15,
+        "pb": 15
+      },
+      "children": [
+        {
+          "component": "Header",
+          "props": {
+            "as": "h3"
+          },
+          "children": "EDUCATION"
+        },
+        {
+          "component": "Hr",
+          "props": { "borderStyle": "solid" },
+          "children": null
+        },
+        {
+          "component": "Flex",
+          "props": { "flexDirection": "column" },
+          "children": [
+            {
+              "component": "Header",
+              "props": {
+                "as": "h3"
+              },
+              "children": "Higher National Diploma"
+            },
+            {
+              "component": "Flex",
+              "props": null,
+              "children": [
+                {
+                  "component": "Text",
+                  "props": null,
+                  "children": "Yaba College Of Technology"
+                },
+                {
+                  "component": "Text",
+                  "props": null,
+                  "children": [
+                    {
+                      "component": "Text",
+                      "props": null,
+                      "children": "Lagos, Nigeria"
+                    },
+                    {
+                      "component": "Text",
+                      "props": null,
+                      "children": "Feb 2020"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "Flex",
+          "props": {
+            "flexDirection": "column",
+            "mt": 2
+          },
+          "children": [
+            {
+              "component": "Header",
+              "props": {
+                "as": "h3"
+              },
+              "children": "National Diploma"
+            },
+            {
+              "component": "Flex",
+              "props": null,
+              "children": [
+                {
+                  "component": "Text",
+                  "props": null,
+                  "children": "Yaba College Of Technology"
+                },
+                {
+                  "component": "Text",
+                  "props": null,
+                  "children": [
+                    {
+                      "component": "Text",
+                      "props": null,
+                      "children": "Lagos, Nigeria"
+                    },
+                    {
+                      "component": "Text",
+                      "props": null,
+                      "children": "Feb 2020"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

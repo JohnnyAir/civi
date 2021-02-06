@@ -2,8 +2,7 @@ import React from "react";
 import Link from "next/link";
 import StyledButton from "./StyledButton";
 import StyledLinkButton from "./StyledLinkButton";
-import Loading from "../assets/Icons/loader.svg";
-// import PropTypes from 'prop-types'
+import Loading from "../icons/svg/loader.svg";
 
 const RenderButton = React.forwardRef((props, ref) => {
   const { link, loading, disabled, icon, children, ...otherProps } = props;
@@ -36,9 +35,5 @@ function Button(props) {
     );
   return <RenderButton {...props} />;
 }
-
-// Button.propTypes = {
-
-// }
 
 export default Button;

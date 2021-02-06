@@ -1,4 +1,4 @@
-const scrSize = {
+export const breakpoints = {
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "430px",
@@ -9,21 +9,21 @@ const scrSize = {
   desktop: "2560px",
 };
 
-const minBreakPoints = {
-  mobileS: `(min-width: ${scrSize.mobileS})`,
-  mobileM: `(min-width: ${scrSize.mobileM})`,
-  mobileL: `(min-width: ${scrSize.mobileL})`,
-  mobileXL: `(min-width: ${scrSize.mobileXL})`,
-  tablet: `(min-width: ${scrSize.tablet})`,
-  laptop: `(min-width: ${scrSize.laptop})`,
-  laptopL: `(min-width: ${scrSize.laptopL})`,
-  desktop: `(min-width: ${scrSize.desktop})`,
-  desktopL: `(min-width: ${scrSize.desktop})`,
+export const mediaQueries = {
+  mobileS: `@media screen and (min-width: ${breakpoints.mobileS})`,
+  mobileM: `@media screen and (min-width: ${breakpoints.mobileM})`,
+  mobileL: `@media screen and (min-width: ${breakpoints.mobileL})`,
+  mobileXL: `@media screen and (min-width: ${breakpoints.mobileXL})`,
+  tablet: `@media screen and (min-width: ${breakpoints.tablet})`,
+  laptop: `@media screen and (min-width: ${breakpoints.laptop})`,
+  laptopL: `@media screen and (min-width: ${breakpoints.laptopL})`,
+  desktop: `@media screen and (min-width: ${breakpoints.desktop})`,
+  desktopL: `@media screen and (min-width: ${breakpoints.desktop})`,
 };
 
-const breakpoints = {
-  screenBreakpoint: scrSize,
-  bp: minBreakPoints,
-}
+const screenBreakpoint = {
+  breakpoints,
+  mediaQueries,
+};
 
-export default breakpoints;
+export default screenBreakpoint;

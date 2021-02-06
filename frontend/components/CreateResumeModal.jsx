@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
 import FormInput from "./FormInput";
 import Button from "./Button";
-import Close from "../assets/Icons/cancel.svg";
 import Resume from "../lib/resume";
 import { useRouter } from "next/router";
-
-Modal.setAppElement("#__next");
+import Svg from "../icons";
 
 function CreateResumeModal(props) {
   const [resumetitle, setResumeTitle] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    Modal.setAppElement("#__next");
+  }, []);
 
   const handleCreateResume = async (e) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ function CreateResumeModal(props) {
     <>
       <StyledCreateResumeModal {...props}>
         <Button link onClick={props.onRequestClose} style={{ float: "right" }}>
-          <Close width="20px" />
+          <Svg name="cancel" width="20px" />
         </Button>
         <h2>Create Resume</h2>
         <form onSubmit={handleCreateResume}>

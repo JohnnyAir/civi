@@ -27,7 +27,6 @@ const StyledPageContainer = styled.div`
 
 const MainContent = styled.main`
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.grey[300]};
   width: 100%;
   overflow-x: auto;
   display: flex;
@@ -40,7 +39,7 @@ export const StyledPageContent = styled.div`
   margin-top: 4rem;
   height: max-content;
   margin-bottom: 3rem;
-  @media ${({ theme }) => theme.screenSize.tablet} {
+  ${({ theme }) => theme.mediaQueries.tablet} {
     margin-top: 1rem;
   }
 `;
